@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white ">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a id="logo-a" href="/" class="navbar-brand" style="padding: 0px !important; display: block;">
+                <img id="logo" src="/images/logo_upp.png" alt="Logo">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Menu</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a href="/login" class="btn btn-outline-dark" style="margin-right: 40px;" >Iniciar sesión</a>
+                </li> 
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12 text-center mx-auto">
+                <div>
+                    <h2 class="mt-5 mb-4">Registro</h2>
+
+                    <input type="checkbox" id="checkbox1" onchange="checkboxChanged(1)">
+                    <label for="checkbox1">Estudiante</label>
+
+                    <input type="checkbox" id="checkbox2" onchange="checkboxChanged(2)">
+                    <label for="checkbox2">Empresa</label>
+                    
+                    <% if (message.lenght > 0) { %>
+                    <div class="alert alert-danger">
+                        <%= message %>
+                    </div>
+                    <% } %>
+
+                    <form action="/signup" method="POST">
+                        <section id="info1" style="display:none;">
+                            <!--    
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="name"
+                                    placeholder="Nombre" required utofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="lastname"
+                                    placeholder="Apellidos" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="tel"
+                                    placeholder="Teléfono" required>
+                            </div>
+                            <select class="form-select mb-3" name="mun" required
+                            onchange="actualizarValor()">
+                                <option value="" disabled selected>Municipio</option>
+                                <option value="penjamo">Pénjamo</option>
+                                <option value="abasolo">Abasolo</option>
+                                <option value="cueramaro">Cuerámaro</option>
+                                <option value="irapuato">Irapuato</option>
+                                <option value="lapiedad">La Piedad</option>
+                            </select>
+
+                            <select class="form-select mb-3" name="career" required
+                            onchange="actualizarValor()">
+                                <option value="" disabled selected>Carrera</option>
+                                <option value="LAG">Licenciatura en Administración y Gestión Empresarial</option>
+                                <option value="IAG">Licenciatura en Ingeniería Agroindustrial</option>
+                                <option value="INA">Licenciatura en Ingeniería Automotriz</option>
+                                <option value="IBT">Licenciatura en Ingeniería en Biotecnología</option>
+                                <option value="ILT">Licenciatura en Ingeniería en Logística y Transporte</option>
+                                <option value="ISW">Licenciatura en Ingeniería en Software</option>                                                    
+                                <option value="IND">Licenciatura en Ingeniería Industrial</option>
+                                <option value="IME">Licenciatura en Ingeniería Mecatrónica</option>
+                                <option value="PMA">Posgrado en Maestría en Administración</option>
+                            </select>
+                            -->
+
+                            <div class="form-group">
+                                <input type="email" class="form-control mb-3" name="email"
+                                    placeholder="Correo electrónico" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" class="form-control mb-3"
+                                    name="password" placeholder="Contraseña"
+                                    required>
+                                <div class="input-group-append">
+                                    <button type="button" id="togglePassword"
+                                        class="btn btn-outline-secondary"
+                                        onclick="togglePasswordVisibility()">Mostrar</button>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-dark"
+                                name="ingresar">Registrarse</button>
+                        </section>
+                    </form>
+
+                    <form action="./signbusiness" method="POST">
+                        <section id="info2" style="display:none;">
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="name"
+                                    placeholder="Nombre" required utofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="lastname"
+                                    placeholder="Apellidos" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="tel"
+                                    placeholder="Teléfono" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control mb-3" name="email"
+                                    placeholder="Correo electrónico" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" class="form-control mb-3"
+                                    id="contrasena2" name="password" placeholder="Contraseña"
+                                    required>
+                                <div class="input-group-append">
+                                    <button type="button" id="togglePassword2" class="btn btn-outline-secondary" 
+                                        onclick="togglePasswordVisibility2()">Mostrar</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3"
+                                    name="name_business" placeholder="Nombre de Empresa"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="area"
+                                    placeholder="Sector" required>
+                            </div>
+
+                            <select class="form-select mb-3" name="state" required
+                                onchange="actualizarValor()">
+                                <option value="" disabled selected>Estado</option>
+                                <option value="Aguascalientes">Aguascalientes</option>
+                                <option value="Baja California">Baja California</option>
+                                <option value="Baja California Sur">Baja California Sur</option>
+                                <option value="Campeche">Campeche</option>
+                                <option value="Chiapas">Chiapas</option>
+                                <option value="Chihuahua">Chihuahua</option>
+                                <option value="Coahuila">Coahuila</option>
+                                <option value="Colima">Colima</option>
+                                <option value="Durango">Durango</option>
+                                <option value="Estado de México">Estado de México</option>
+                                <option value="Guanajuato">Guanajuato</option>
+                                <option value="Guerrero">Guerrero</option>
+                                <option value="Hidalgo">Hidalgo</option>
+                                <option value="Jalisco">Jalisco</option>
+                                <option value="Michoacán">Michoacán</option>
+                                <option value="Morelos">Morelos</option>
+                                <option value="Nayarit">Nayarit</option>
+                                <option value="Nuevo León">Nuevo León</option>
+                                <option value="Oaxaca">Oaxaca</option>
+                                <option value="Puebla">Puebla</option>
+                                <option value="Querétaro">Querétaro</option>
+                                <option value="Quintana Roo">Quintana Roo</option>
+                                <option value="San Luis Potosí">San Luis Potosí</option>
+                                <option value="Sinaloa">Sinaloa</option>
+                                <option value="Sonora">Sonora</option>
+                                <option value="Tabasco">Tabasco</option>
+                                <option value="Tamaulipas">Tamaulipas</option>
+                                <option value="Tlaxcala">Tlaxcala</option>
+                                <option value="Veracruz">Veracruz</option>
+                                <option value="Yucatán">Yucatán</option>
+                                <option value="Zacatecas">Zacatecas</option>
+                            </select>
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" name="rfc"
+                                    placeholder="RFC" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark"
+                                name="agregar">Registrarse</button>
+                        </section>
+                    </form>
+
+                    <p class="mt-3">¿Ya tienes una cuenta? <a href="/login">Inicia Sesión</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
