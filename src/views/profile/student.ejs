@@ -19,7 +19,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="btn" aria-current="page" href="#">Menu</a>
+                <a class="btn" aria-current="page" href="/">Menu</a>
               </li>
               <li class="nav-item">
                 <a class="btn" href="#">Explorar</a>
@@ -40,15 +40,15 @@
         <div class="col sm 6">
             <div class="card">
                 <div class="card body">
-                    <h3 class="card title">
-                        <span class="fa fa-user">Local</span>
-                    </h3>
+                    <h3>Perfil</h3>
                     <p>
-                        <strong>id: </strong> <%= user._id%> <br>
-                        <strong>correo: </strong> <%= user.local.email %> <br>
-                        <strong>contraseña: </strong> <%= user.local.password %>
+                        <!--<strong>id: </strong> <%= user._id%> <br>-->
+                        <strong>Correo: </strong> <%= user.local.email %> <br>
+                        <!--<strong>contraseña: </strong> <%= user.local.password %>-->
                     </p>
+                    
                 </div>
+                <a href="" class="btn btn-outline-dark">Editar perfil</a>
             </div>
         </div>
     </div>

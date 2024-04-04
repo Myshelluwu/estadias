@@ -29,6 +29,7 @@
               </li>
             </ul>
           </div>
+          <% if (!user) { %>
           <ul class="navbar-nav">
             <li class="nav-item">
               <a href="/login" class="btn btn-outline-dark" style="margin-right: 40px;" >Iniciar sesión</a>
@@ -37,9 +38,23 @@
               <a href="/signup" class="btn btn-outline-dark" style="margin-right: 40px;" >Registrarse</a>
             </li> 
           </ul>
+          <% } %> 
+          <% if (user) { %>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a href="/profile/student" class="btn" style="margin-right: 40px;" >Perfil</a>
+              </li> 
+            </ul>
+            <% } %> 
         </div>
     </nav>
-    
+
+
+    <div class="container">
+      <div class="cards">
+            <h1>hola!</h1>
+      </div>
+    </div>
 
 
     <%- include('partials/footer') %>

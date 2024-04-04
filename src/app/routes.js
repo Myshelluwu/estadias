@@ -1,11 +1,9 @@
-//const express = require('express');
-//const app = express();
-//const passport = require("passport");
-
 module.exports = function (app, passport){
 
     app.get('/', (req,res) => {
-        res.render('index');  // carga el index.ejs
+        res.render('index', {
+             user: req.user 
+        });
     });
 
     app.get('/login', (req,res) => {
@@ -34,7 +32,7 @@ module.exports = function (app, passport){
     
     
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/profile/student',
+        successRedirect : '/',
         failureRedirect : '/login',
         failureFlash : true
     }));
