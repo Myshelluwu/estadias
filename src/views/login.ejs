@@ -19,9 +19,9 @@
                 <img id="logo" src="/images/logo_upp.png" alt="Logo">
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto links">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Menu</a>
+                        <a class="btn" aria-current="page" href="/">Menu</a>
                     </li>
                 </ul>
             </div>
@@ -34,24 +34,32 @@
         </div>
         <% } %>
         
-    <form action="/login" method="post" id="login">
-        <h2 class="mt-5 mb-4 text-center">Iniciar Sesión</h2>
-        <div class="form-group">
-            <input type="email" class="form-control mb-3" name="email" placeholder="Correo electrónico" required>
-        </div>
-        <div class="input-group">
-            <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Contraseña"
-                required>
-            <div class="input-group-append">
-                <button type="button" id="togglePassword" class="btn btn-outline-secondary"
-                    onclick="passwordVisibility()">Mostrar</button>
+        <section class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12 text-center mx-auto" >
+                    <form action="/login" method="post" id="login">
+                        <h2 class="mt-5 mb-4 text-center">Iniciar Sesión</h2>
+                        <div class="form-group">
+                            <input type="email" class="form-control mb-3" name="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Contraseña"
+                                required>
+                            <div class="input-group-append">
+                                <button type="button" id="togglePassword" class="btn btn-outline-secondary"
+                                    onclick="passwordVisibility()">Mostrar</button>
+                            </div>
+                        </div>
+                
+                        <button type="submit" class="btn btn-dark mx-auto d-block" name="login">Entrar</button>
+
+                        <p class="mt-3">¿No tienes una cuenta? <a href="/signup">Regístrate</a></p>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <button type="submit" class="btn btn-dark mx-auto d-block" name="login">Entrar</button>
-    </form>
-
-    <p class="mt-3">¿No tienes una cuenta? <a href="/signup">Regístrate</a></p>
+    
 
     <%- include('partials/footer') %>
 </body>

@@ -29,6 +29,7 @@ module.exports = function (passport) {
             const user = await User.findOne({'local.email': email}); // Busca un usuario en la base de datos por su dirección de correo electrónico.
             if (user) { // Si se encuentra un usuario con el correo electrónico proporcionado, se ejecuta esta condición.
                 return done(null, false, req.flash('signupMessage', 'El correo ya ha sido usado.')); // Llama a la función de devolución de llamada con un mensaje de error.
+                console.log('El correo ya existe');
             } else { // Si no se encuentra ningún usuario con el correo electrónico proporcionado, se ejecuta esta condición.
                 var newUser = new User(); // Crea un nuevo objeto de usuario.
                 newUser.local.email = email; // Asigna el correo electrónico proporcionado al campo 'email' del usuario.

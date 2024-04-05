@@ -23,6 +23,10 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.links a:hover{
+  color: #084697;
+}
+
 #logo {
   display: block;
   width: 100px;
